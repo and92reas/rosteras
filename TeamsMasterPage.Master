@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TeamsMasterPage.master.cs" Inherits="Rosteras.TeamsMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<title> Rosteras </title>
+<link id="Link1" href ="~/Styles/Site.css" type="text/css" rel="Stylesheet" runat="server" /> 
+</head>
+<body>
+    <form id="form1" runat="server">
+<div id = "heading" >
+    <h1>  Rosteras </h1>
+</div>
+
+<div id = "navigator">
+    
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+    </asp:ContentPlaceHolder>
+    
+</div>
+<div id = "generalContent">
+
+</div>
+
+<div id = "playersContent" >
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+
+</div>
+
+<div id = "" >
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+
+</div>
+
+<div id = "lastContent" >
+All rights reserved
+</div>
+
+    </form>
+
+</body>
+</html>

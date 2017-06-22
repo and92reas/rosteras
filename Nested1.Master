@@ -1,0 +1,94 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Nested1.master.cs" Inherits="Rosteras.Nested1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title> Rosteras </title>
+<link href ="~/Styles/Site.css" type="text/css" rel="Stylesheet" runat="server" /> 
+</head>
+<body>
+    <form id="form1" runat="server">
+<div id ="main">
+
+<div id = "aboveHeading" >
+   
+    <div id ="searchPl">
+    <asp:TextBox ID="playerSearched" runat="server"></asp:TextBox>
+    </div>
+    <div id ="searchBut">
+    <asp:Button ID="Button1" runat="server" Text="Αναζήτηση Παίκτη" 
+        onclick="search_Click" />
+    </div>
+</div>
+
+<div id = "heading" >
+    <h1> <a href = "League.aspx?league=Superleague"> Rosteras </a> </h1>
+</div>
+
+<div id = "navigator">
+    
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+        <table id = 'menu'>
+            <tr>
+                <th><a href = "League.aspx?league=Superleague">Superleague</a> </th>
+                <th><a href = "League.aspx?league=FootballLeague">Football League</a> </th>
+                <th><a href = "ComparePlayers.aspx">Compare players</a> </th>
+                <th><a href = "CompareTeams.aspx">Compare teams</a> </th>
+            </tr>
+        </table>
+    </asp:ContentPlaceHolder>
+    
+</div>
+<div id = "imageContent">
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+    </asp:ContentPlaceHolder>
+
+</div>
+
+<div id = "helpingContent">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+        <table id = 'menu2'>
+            <tr>
+                <th><a href = "League.aspx?league=Superleague">Superleague</a> </th>
+            </tr>
+            <tr>
+                <th><a href = "League.aspx?league=FootballLeague">Football League</a> </th>
+            </tr>
+            <tr>
+                <th><a href = "ComparePlayers.aspx">Compare players</a> </th>
+            </tr>
+            <tr>
+                <th><a href = "CompareTeams.aspx">Compare teams</a> </th>
+            </tr>
+        </table>
+        </asp:ContentPlaceHolder>
+
+</div>
+
+<div id = "teamsContent" >
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+
+</div>
+</div>
+
+<div id = "footer"> 
+    <h5> All rights reserved </h5>
+</div>
+
+
+<%--<div id = "lastContent" >
+
+<asp:Panel ID="AllRightReserved" runat="server" >
+All rights reserved
+    </asp:Panel>
+</div>--%>
+
+    </form>
+<script type ="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"> </script>
+<script type ="text/javascript" src ="Scripts/Script.js"> </script>
+</body>
+</html>

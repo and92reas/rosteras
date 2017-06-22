@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterDatabase.master.cs" Inherits="Rosteras.MasterDatabase" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title> Rosteras </title>
+<link href ="~/Styles/Site.css" type="text/css" rel="Stylesheet" runat="server" /> 
+</head>
+<body>
+
+    <form id="form1" runat="server">
+<div id ="main">
+<div id = "aboveHeading" >
+    <asp:TextBox ID="playerSearched" runat="server"></asp:TextBox>
+    <asp:Button ID="search" runat="server" Text="Αναζήτηση Παίκτη" 
+        onclick="search_Click" />
+    <asp:TextBox ID="teamSearched" runat="server"></asp:TextBox>
+    <asp:Button ID="pastTeamSearched" runat="server" Text="Αναζήτηση Ομάδας" OnClick="pastTeamSearched_Click" />
+    
+</div>
+
+<div id = "heading" >
+    <h1> <a href = "League.aspx?league=Superleague" id ="siteTitle"> Rosteras </a> </h1>
+</div>
+
+<div id = "navigator">
+    
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+    <table id = 'menu'>
+            <tr>
+                <th><a href = "AddNewPlayer.aspx">Add New Player</a> </th>
+                <th><a href = "PlayerTransfer.aspx">Transfer Player</a> </th>
+                <th><a href = "GameUpdate.aspx">Game Update</a> </th>
+            </tr>
+        </table>    
+    
+    
+    </asp:ContentPlaceHolder>
+    
+    
+    
+</div>
+
+<div id = "helpingContent2">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+        
+        <asp:Label ID="searchRes" runat="server" Text="Search Results"></asp:Label>
+        
+        </asp:ContentPlaceHolder>
+
+</div>
+
+<div id = "teamsContent2" >
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    
+    </asp:ContentPlaceHolder>
+</div>
+
+</div>
+
+
+    </form>
+<script type ="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"> </script>
+<script type ="text/javascript" src ="Scripts/Script.js"> </script>
+</body>
+</html>
