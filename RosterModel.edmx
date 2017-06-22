@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ΡόστερModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ΡόστερModelStoreContainer">
+          <EntitySet Name="Θέση" EntityType="ΡόστερModel.Store.Θέση" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Ομάδες" EntityType="ΡόστερModel.Store.Ομάδες" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Παίκτες" EntityType="ΡόστερModel.Store.Παίκτες" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Προηγούμενες_Ομάδες" EntityType="ΡόστερModel.Store.Προηγούμενες_Ομάδες" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Πρωταθλήματα" EntityType="ΡόστερModel.Store.Πρωταθλήματα" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Ομάδες__Τελευταί__08EA5793" Association="ΡόστερModel.Store.FK__Ομάδες__Τελευταί__08EA5793">
+            <End Role="Πρωταθλήματα" EntitySet="Πρωταθλήματα" />
+            <End Role="Ομάδες" EntitySet="Ομάδες" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Παίκτες__Ηλικία__0DAF0CB0" Association="ΡόστερModel.Store.FK__Παίκτες__Ηλικία__0DAF0CB0">
+            <End Role="Ομάδες" EntitySet="Ομάδες" />
+            <End Role="Παίκτες" EntitySet="Παίκτες" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Προηγούμεν__Χώρα__182C9B23" Association="ΡόστερModel.Store.FK__Προηγούμεν__Χώρα__182C9B23">
+            <End Role="Παίκτες" EntitySet="Παίκτες" />
+            <End Role="Προηγούμενες_Ομάδες" EntitySet="Προηγούμενες_Ομάδες" />
+          </AssociationSet>
+          <AssociationSet Name="Παίκτες_θέση_FK" Association="ΡόστερModel.Store.Παίκτες_θέση_FK">
+            <End Role="Θέση" EntitySet="Θέση" />
+            <End Role="Παίκτες" EntitySet="Παίκτες" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Θέση">
+          <Key>
+            <PropertyRef Name="Ονομασία" />
+          </Key>
+          <Property Name="Ονομασία" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Σειρά" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Ομάδες">
+          <Key>
+            <PropertyRef Name="Ονομασία" />
+          </Key>
+          <Property Name="Ονομασία" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Πρωτάθλημα" Type="varchar" MaxLength="50" />
+          <Property Name="Περιοχή" Type="varchar" MaxLength="40" />
+          <Property Name="Χρώματα" Type="varchar" MaxLength="30" />
+          <Property Name="Έτος_Ίδρυσης" Type="char" MaxLength="4" />
+          <Property Name="Αριθμός_Πρωταθλημάτων" Type="int" />
+          <Property Name="Αριθμός_Κυπέλλων" Type="int" />
+          <Property Name="Τελευταίο_Τρόπαιο" Type="varchar" MaxLength="50" />
+          <Property Name="Έδρα" Type="varchar" MaxLength="30" />
+          <Property Name="Προπονητής" Type="varchar" MaxLength="30" />
+          <Property Name="Πρόεδρος" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Παίκτες">
+          <Key>
+            <PropertyRef Name="ID_Παίκτη" />
+          </Key>
+          <Property Name="ID_Παίκτη" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="Όνομα" Type="varchar" MaxLength="30" />
+          <Property Name="Τρέχουσα_Ομάδα" Type="varchar" MaxLength="30" />
+          <Property Name="Ύψος" Type="float" />
+          <Property Name="Γκολ_στη_Superleague" Type="int" />
+          <Property Name="Γκολ_στη_Football_league" Type="int" />
+          <Property Name="Ηλικία" Type="int" />
+          <Property Name="Θέση" Type="varchar" MaxLength="20" />
+          <Property Name="Χώρα" Type="varchar" MaxLength="25" />
+          <Property Name="Εμφανίσεις_στη_Superleague" Type="int" />
+          <Property Name="Εμφανίσεις_στη_Football_league" Type="int" />
+          <Property Name="Δανεικός_από" Type="varchar" MaxLength="30" />
+          <Property Name="Φετινές_Συμμετοχές_στη_Superleague" Type="int" />
+          <Property Name="Φετινές_Συμμετοχές_στη_Football_league" Type="int" />
+          <Property Name="Φετινά_Γκολ_στη_Superleague" Type="int" />
+          <Property Name="Φετινά_Γκολ_στη_Football_league" Type="int" />
+        </EntityType>
+        <EntityType Name="Προηγούμενες_Ομάδες">
+          <Key>
+            <PropertyRef Name="ID_Παίκτη" />
+            <PropertyRef Name="Ομάδα" />
+          </Key>
+          <Property Name="ID_Παίκτη" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="Ομάδα" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Χώρα" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Πρωταθλήματα">
+          <Key>
+            <PropertyRef Name="Ονομασία" />
+          </Key>
+          <Property Name="Ονομασία" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Τάξη" Type="char" MaxLength="2" />
+          <Property Name="Τελευταίος_Πρωταθλήτης" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK__Ομάδες__Τελευταί__08EA5793">
+          <End Role="Πρωταθλήματα" Type="ΡόστερModel.Store.Πρωταθλήματα" Multiplicity="0..1" />
+          <End Role="Ομάδες" Type="ΡόστερModel.Store.Ομάδες" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Πρωταθλήματα">
+              <PropertyRef Name="Ονομασία" />
+            </Principal>
+            <Dependent Role="Ομάδες">
+              <PropertyRef Name="Πρωτάθλημα" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Παίκτες__Ηλικία__0DAF0CB0">
+          <End Role="Ομάδες" Type="ΡόστερModel.Store.Ομάδες" Multiplicity="0..1" />
+          <End Role="Παίκτες" Type="ΡόστερModel.Store.Παίκτες" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ομάδες">
+              <PropertyRef Name="Ονομασία" />
+            </Principal>
+            <Dependent Role="Παίκτες">
+              <PropertyRef Name="Τρέχουσα_Ομάδα" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Προηγούμεν__Χώρα__182C9B23">
+          <End Role="Παίκτες" Type="ΡόστερModel.Store.Παίκτες" Multiplicity="1" />
+          <End Role="Προηγούμενες_Ομάδες" Type="ΡόστερModel.Store.Προηγούμενες_Ομάδες" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Παίκτες">
+              <PropertyRef Name="ID_Παίκτη" />
+            </Principal>
+            <Dependent Role="Προηγούμενες_Ομάδες">
+              <PropertyRef Name="ID_Παίκτη" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Παίκτες_θέση_FK">
+          <End Role="Θέση" Type="ΡόστερModel.Store.Θέση" Multiplicity="0..1" />
+          <End Role="Παίκτες" Type="ΡόστερModel.Store.Παίκτες" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Θέση">
+              <PropertyRef Name="Ονομασία" />
+            </Principal>
+            <Dependent Role="Παίκτες">
+              <PropertyRef Name="Θέση" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ΡόστερModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="RosterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Θέση" EntityType="ΡόστερModel.Θέση" />
+          <EntitySet Name="Ομάδες" EntityType="ΡόστερModel.Ομάδες" />
+          <EntitySet Name="Παίκτες" EntityType="ΡόστερModel.Παίκτες" />
+          <EntitySet Name="Προηγούμενες_Ομάδες" EntityType="ΡόστερModel.Προηγούμενες_Ομάδες" />
+          <EntitySet Name="Πρωταθλήματα" EntityType="ΡόστερModel.Πρωταθλήματα" />
+          <AssociationSet Name="Παίκτες_θέση_FK" Association="ΡόστερModel.Παίκτες_θέση_FK">
+            <End Role="Θέση" EntitySet="Θέση" />
+            <End Role="Παίκτες" EntitySet="Παίκτες" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ομάδες__Τελευταί__08EA5793" Association="ΡόστερModel.FK__Ομάδες__Τελευταί__08EA5793">
+            <End Role="Πρωταθλήματα" EntitySet="Πρωταθλήματα" />
+            <End Role="Ομάδες" EntitySet="Ομάδες" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Παίκτες__Ηλικία__0DAF0CB0" Association="ΡόστερModel.FK__Παίκτες__Ηλικία__0DAF0CB0">
+            <End Role="Ομάδες" EntitySet="Ομάδες" />
+            <End Role="Παίκτες" EntitySet="Παίκτες" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Προηγούμεν__Χώρα__182C9B23" Association="ΡόστερModel.FK__Προηγούμεν__Χώρα__182C9B23">
+            <End Role="Παίκτες" EntitySet="Παίκτες" />
+            <End Role="Προηγούμενες_Ομάδες" EntitySet="Προηγούμενες_Ομάδες" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Θέση">
+          <Key>
+            <PropertyRef Name="Ονομασία" />
+          </Key>
+          <Property Name="Ονομασία" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Σειρά" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Παίκτες" Relationship="ΡόστερModel.Παίκτες_θέση_FK" FromRole="Θέση" ToRole="Παίκτες" />
+        </EntityType>
+        <EntityType Name="Ομάδες">
+          <Key>
+            <PropertyRef Name="Ονομασία" />
+          </Key>
+          <Property Name="Ονομασία" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Πρωτάθλημα" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Περιοχή" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Χρώματα" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Έτος_Ίδρυσης" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="Αριθμός_Πρωταθλημάτων" Type="Int32" />
+          <Property Name="Αριθμός_Κυπέλλων" Type="Int32" />
+          <Property Name="Τελευταίο_Τρόπαιο" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Έδρα" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Προπονητής" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Πρόεδρος" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Πρωταθλήματα" Relationship="ΡόστερModel.FK__Ομάδες__Τελευταί__08EA5793" FromRole="Ομάδες" ToRole="Πρωταθλήματα" />
+          <NavigationProperty Name="Παίκτες" Relationship="ΡόστερModel.FK__Παίκτες__Ηλικία__0DAF0CB0" FromRole="Ομάδες" ToRole="Παίκτες" />
+        </EntityType>
+        <EntityType Name="Παίκτες">
+          <Key>
+            <PropertyRef Name="ID_Παίκτη" />
+          </Key>
+          <Property Name="ID_Παίκτη" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="Όνομα" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Τρέχουσα_Ομάδα" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Ύψος" Type="Double" />
+          <Property Name="Γκολ_στη_Superleague" Type="Int32" />
+          <Property Name="Γκολ_στη_Football_league" Type="Int32" />
+          <Property Name="Ηλικία" Type="Int32" />
+          <Property Name="Θέση" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Χώρα" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Εμφανίσεις_στη_Superleague" Type="Int32" />
+          <Property Name="Εμφανίσεις_στη_Football_league" Type="Int32" />
+          <Property Name="Δανεικός_από" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Φετινές_Συμμετοχές_στη_Superleague" Type="Int32" />
+          <Property Name="Φετινές_Συμμετοχές_στη_Football_league" Type="Int32" />
+          <Property Name="Φετινά_Γκολ_στη_Superleague" Type="Int32" />
+          <Property Name="Φετινά_Γκολ_στη_Football_league" Type="Int32" />
+          <NavigationProperty Name="Θέση1" Relationship="ΡόστερModel.Παίκτες_θέση_FK" FromRole="Παίκτες" ToRole="Θέση" />
+          <NavigationProperty Name="Ομάδες" Relationship="ΡόστερModel.FK__Παίκτες__Ηλικία__0DAF0CB0" FromRole="Παίκτες" ToRole="Ομάδες" />
+          <NavigationProperty Name="Προηγούμενες_Ομάδες" Relationship="ΡόστερModel.FK__Προηγούμεν__Χώρα__182C9B23" FromRole="Παίκτες" ToRole="Προηγούμενες_Ομάδες" />
+        </EntityType>
+        <EntityType Name="Προηγούμενες_Ομάδες">
+          <Key>
+            <PropertyRef Name="ID_Παίκτη" />
+            <PropertyRef Name="Ομάδα" />
+          </Key>
+          <Property Name="ID_Παίκτη" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="Ομάδα" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Χώρα" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Παίκτες" Relationship="ΡόστερModel.FK__Προηγούμεν__Χώρα__182C9B23" FromRole="Προηγούμενες_Ομάδες" ToRole="Παίκτες" />
+        </EntityType>
+        <EntityType Name="Πρωταθλήματα">
+          <Key>
+            <PropertyRef Name="Ονομασία" />
+          </Key>
+          <Property Name="Ονομασία" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Τάξη" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Τελευταίος_Πρωταθλήτης" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Ομάδες" Relationship="ΡόστερModel.FK__Ομάδες__Τελευταί__08EA5793" FromRole="Πρωταθλήματα" ToRole="Ομάδες" />
+        </EntityType>
+        <Association Name="Παίκτες_θέση_FK">
+          <End Role="Θέση" Type="ΡόστερModel.Θέση" Multiplicity="0..1" />
+          <End Role="Παίκτες" Type="ΡόστερModel.Παίκτες" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Θέση">
+              <PropertyRef Name="Ονομασία" />
+            </Principal>
+            <Dependent Role="Παίκτες">
+              <PropertyRef Name="Θέση" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ομάδες__Τελευταί__08EA5793">
+          <End Role="Πρωταθλήματα" Type="ΡόστερModel.Πρωταθλήματα" Multiplicity="0..1" />
+          <End Role="Ομάδες" Type="ΡόστερModel.Ομάδες" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Πρωταθλήματα">
+              <PropertyRef Name="Ονομασία" />
+            </Principal>
+            <Dependent Role="Ομάδες">
+              <PropertyRef Name="Πρωτάθλημα" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Παίκτες__Ηλικία__0DAF0CB0">
+          <End Role="Ομάδες" Type="ΡόστερModel.Ομάδες" Multiplicity="0..1" />
+          <End Role="Παίκτες" Type="ΡόστερModel.Παίκτες" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ομάδες">
+              <PropertyRef Name="Ονομασία" />
+            </Principal>
+            <Dependent Role="Παίκτες">
+              <PropertyRef Name="Τρέχουσα_Ομάδα" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Προηγούμεν__Χώρα__182C9B23">
+          <End Role="Παίκτες" Type="ΡόστερModel.Παίκτες" Multiplicity="1" />
+          <End Role="Προηγούμενες_Ομάδες" Type="ΡόστερModel.Προηγούμενες_Ομάδες" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Παίκτες">
+              <PropertyRef Name="ID_Παίκτη" />
+            </Principal>
+            <Dependent Role="Προηγούμενες_Ομάδες">
+              <PropertyRef Name="ID_Παίκτη" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ΡόστερModelStoreContainer" CdmEntityContainer="RosterEntities">
+          <EntitySetMapping Name="Θέση"><EntityTypeMapping TypeName="ΡόστερModel.Θέση"><MappingFragment StoreEntitySet="Θέση">
+            <ScalarProperty Name="Ονομασία" ColumnName="Ονομασία" />
+            <ScalarProperty Name="Σειρά" ColumnName="Σειρά" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ομάδες"><EntityTypeMapping TypeName="ΡόστερModel.Ομάδες"><MappingFragment StoreEntitySet="Ομάδες">
+            <ScalarProperty Name="Ονομασία" ColumnName="Ονομασία" />
+            <ScalarProperty Name="Πρωτάθλημα" ColumnName="Πρωτάθλημα" />
+            <ScalarProperty Name="Περιοχή" ColumnName="Περιοχή" />
+            <ScalarProperty Name="Χρώματα" ColumnName="Χρώματα" />
+            <ScalarProperty Name="Έτος_Ίδρυσης" ColumnName="Έτος_Ίδρυσης" />
+            <ScalarProperty Name="Αριθμός_Πρωταθλημάτων" ColumnName="Αριθμός_Πρωταθλημάτων" />
+            <ScalarProperty Name="Αριθμός_Κυπέλλων" ColumnName="Αριθμός_Κυπέλλων" />
+            <ScalarProperty Name="Τελευταίο_Τρόπαιο" ColumnName="Τελευταίο_Τρόπαιο" />
+            <ScalarProperty Name="Έδρα" ColumnName="Έδρα" />
+            <ScalarProperty Name="Προπονητής" ColumnName="Προπονητής" />
+            <ScalarProperty Name="Πρόεδρος" ColumnName="Πρόεδρος" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Παίκτες"><EntityTypeMapping TypeName="ΡόστερModel.Παίκτες"><MappingFragment StoreEntitySet="Παίκτες">
+            <ScalarProperty Name="ID_Παίκτη" ColumnName="ID_Παίκτη" />
+            <ScalarProperty Name="Όνομα" ColumnName="Όνομα" />
+            <ScalarProperty Name="Τρέχουσα_Ομάδα" ColumnName="Τρέχουσα_Ομάδα" />
+            <ScalarProperty Name="Ύψος" ColumnName="Ύψος" />
+            <ScalarProperty Name="Γκολ_στη_Superleague" ColumnName="Γκολ_στη_Superleague" />
+            <ScalarProperty Name="Γκολ_στη_Football_league" ColumnName="Γκολ_στη_Football_league" />
+            <ScalarProperty Name="Ηλικία" ColumnName="Ηλικία" />
+            <ScalarProperty Name="Θέση" ColumnName="Θέση" />
+            <ScalarProperty Name="Χώρα" ColumnName="Χώρα" />
+            <ScalarProperty Name="Εμφανίσεις_στη_Superleague" ColumnName="Εμφανίσεις_στη_Superleague" />
+            <ScalarProperty Name="Εμφανίσεις_στη_Football_league" ColumnName="Εμφανίσεις_στη_Football_league" />
+            <ScalarProperty Name="Δανεικός_από" ColumnName="Δανεικός_από" />
+            <ScalarProperty Name="Φετινές_Συμμετοχές_στη_Superleague" ColumnName="Φετινές_Συμμετοχές_στη_Superleague" />
+            <ScalarProperty Name="Φετινές_Συμμετοχές_στη_Football_league" ColumnName="Φετινές_Συμμετοχές_στη_Football_league" />
+            <ScalarProperty Name="Φετινά_Γκολ_στη_Superleague" ColumnName="Φετινά_Γκολ_στη_Superleague" />
+            <ScalarProperty Name="Φετινά_Γκολ_στη_Football_league" ColumnName="Φετινά_Γκολ_στη_Football_league" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Προηγούμενες_Ομάδες"><EntityTypeMapping TypeName="ΡόστερModel.Προηγούμενες_Ομάδες"><MappingFragment StoreEntitySet="Προηγούμενες_Ομάδες">
+            <ScalarProperty Name="ID_Παίκτη" ColumnName="ID_Παίκτη" />
+            <ScalarProperty Name="Ομάδα" ColumnName="Ομάδα" />
+            <ScalarProperty Name="Χώρα" ColumnName="Χώρα" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Πρωταθλήματα"><EntityTypeMapping TypeName="ΡόστερModel.Πρωταθλήματα"><MappingFragment StoreEntitySet="Πρωταθλήματα">
+            <ScalarProperty Name="Ονομασία" ColumnName="Ονομασία" />
+            <ScalarProperty Name="Τάξη" ColumnName="Τάξη" />
+            <ScalarProperty Name="Τελευταίος_Πρωταθλήτης" ColumnName="Τελευταίος_Πρωταθλήτης" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="RosterModel">
+        <EntityTypeShape EntityType="ΡόστερModel.Θέση" Width="1.5" PointX="3" PointY="7.625" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ΡόστερModel.Ομάδες" Width="1.5" PointX="3" PointY="1.625" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ΡόστερModel.Παίκτες" Width="1.5" PointX="5.25" PointY="1" Height="4.6725065104166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ΡόστερModel.Προηγούμενες_Ομάδες" Width="1.5" PointX="7.5" PointY="2.5" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="ΡόστερModel.Πρωταθλήματα" Width="1.5" PointX="0.75" PointY="2.5" Height="1.7879850260416674" IsExpanded="true" />
+        <AssociationConnector Association="ΡόστερModel.Παίκτες_θέση_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.422841796875" />
+          <ConnectorPoint PointX="6" PointY="8.422841796875" />
+          <ConnectorPoint PointX="6" PointY="5.6725065104166656" />
+        </AssociationConnector>
+        <AssociationConnector Association="ΡόστερModel.FK__Ομάδες__Τελευταί__08EA5793" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.3939925130208337" />
+          <ConnectorPoint PointX="3" PointY="3.3939925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="ΡόστερModel.FK__Παίκτες__Ηλικία__0DAF0CB0" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.3843489583333328" />
+          <ConnectorPoint PointX="5.25" PointY="3.3843489583333328" />
+        </AssociationConnector>
+        <AssociationConnector Association="ΡόστερModel.FK__Προηγούμεν__Χώρα__182C9B23" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="3.3939925130208328" />
+          <ConnectorPoint PointX="7.5" PointY="3.3939925130208328" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
