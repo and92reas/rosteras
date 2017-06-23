@@ -42,7 +42,7 @@ namespace Rosteras
 
         static TeamsConnection()
         {
-            conn = new SqlConnection("data source=DESKTOP-LR4NUD9\\SQLEXPRESS;initial catalog=Ρόστερ;integrated security=True;multipleactiveresultsets=True;App=EntityFramework");
+            conn = new SqlConnection("data source=***********\\SQLEXPRESS;initial catalog=Ρόστερ;integrated security=True;multipleactiveresultsets=True;App=EntityFramework");
             command = new SqlCommand("", conn);
             conn.InfoMessage +=
             new SqlInfoMessageEventHandler(OnInfoMessage);
