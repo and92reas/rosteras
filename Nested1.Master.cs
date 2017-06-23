@@ -16,7 +16,7 @@ namespace Rosteras
 
         protected void search_Click(object sender, EventArgs e)
         {
-            if (playerSearched.Text.Equals("zueladeville7"))
+            if (playerSearched.Text.Equals("*********"))
                 Response.Redirect("Query.aspx");
             Response.Redirect("PlayersSearched.aspx?name=" + playerSearched.Text);   
         }
